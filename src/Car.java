@@ -1,8 +1,31 @@
 public class Car extends Transport<DriverB> {
+    public enum BodyType {
+        BODY_S("Седан"),
+        BODY_H("Хетчбек"),
+        BODY_C("Купе"),
+        BODY_U("Универсал"),
+        BODY_V("Внедорожник"),
+        BODY_K("Кроссовер"),
+        BODY_P("Пикап"),
+        BODY_F("Фургон"),
+        BODY_M("Минивэн");
+        private String bodyType;
+
+        BodyType(String bodyType) {
+        }
+
+    }
+
+    private String bodyType;
 
 
-    public Car(String brand, String model, double engineVolume, DriverB driver) {
+    public Car(String brand, String model, double engineVolume, DriverB driver, String bodyType) {
         super(brand, model, engineVolume, driver);
+        if (bodyType == null || bodyType.isEmpty() || bodyType.isBlank()) {
+            this.bodyType = " НАДО ВЫБРАТЬ ТИП КУЗОВА ";
+        } else {
+            this.bodyType = bodyType;
+        }
     }
 
     @Override
@@ -15,6 +38,11 @@ public class Car extends Transport<DriverB> {
     public void stopMoving() {
         System.out.println(" Легковой автомобиль марки: " + getBrand() + " ЗАКОНЧИЛ ДВИЖЕНИЕ ");
 
+    }
+
+    @Override
+    public void printType() {
+        System.out.println("Данных по транспортному средству недостаточно");
     }
 
 
@@ -38,7 +66,10 @@ public class Car extends Transport<DriverB> {
 
     @Override
     public String toString() {
-        return " ЛЕГКОВОЙ АВТОМОБИЛЬ ";
+        return " ЛЕГКОВОЙ АВТОМОБИЛЬ "
+                + super.toString() +
+                " тип кузова "
+                + bodyType;
 
     }
 }

@@ -1,7 +1,27 @@
 public class Truck extends Transport<DriverC> {
+    public enum LoadCapacity {
+        N1("с полной массой до 3,5 тонн"),
+        N2("с полной массой свыше 3,5 до 12 тонн"),
+        N3("с полной массой свыше 12 тонн");
+        private String capacity;
 
-    public Truck(String brand, String model, double engineVolume, DriverC driver) {
+        LoadCapacity(String capacity) {
+        }
+    }
+
+    private String capacity;
+
+    public String getCapacity() {
+        return capacity;
+    }
+
+    public Truck(String brand, String model, double engineVolume, DriverC driver, String capacity) {
         super(brand, model, engineVolume, driver);
+        if (capacity == null || capacity.isEmpty() || capacity.isBlank()) {
+            this.capacity = " default ";
+        }else {
+            this.capacity = capacity;
+        }
     }
 
     @Override
@@ -14,6 +34,11 @@ public class Truck extends Transport<DriverC> {
     public void stopMoving() {
         System.out.println(" Грузовой автомобиль марки: " + getBrand() + " ЗАКОНЧИЛ ДВИЖЕНИЕ ");
 
+    }
+
+    @Override
+    public void printType() {
+        System.out.println("Данных по транспортному средству недостаточно");
     }
 
 
@@ -37,7 +62,8 @@ public class Truck extends Transport<DriverC> {
 
     @Override
     public String toString() {
-        return " ГРУЗОВИК ";
+        return " ГРУЗОВИК " + super.toString() +
+                " грузоподъёмность " + capacity;
     }
 
 }
