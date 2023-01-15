@@ -9,20 +9,26 @@ public class Car extends Transport<DriverB> {
         BODY_P("Пикап"),
         BODY_F("Фургон"),
         BODY_M("Минивэн");
-        private String bodyType;
+        private final String bodyType;
 
         BodyType(String bodyType) {
+            this.bodyType = bodyType;
         }
+
+        public String getBodyType() {
+            return bodyType;
+        }
+
 
     }
 
-    private String bodyType;
+    private BodyType bodyType;
 
 
-    public Car(String brand, String model, double engineVolume, DriverB driver, String bodyType) {
+    public Car(String brand, String model, double engineVolume, DriverB driver, BodyType bodyType) {
         super(brand, model, engineVolume, driver);
-        if (bodyType == null || bodyType.isEmpty() || bodyType.isBlank()) {
-            this.bodyType = " НАДО ВЫБРАТЬ ТИП КУЗОВА ";
+        if (bodyType == null) {
+            this.bodyType = BodyType.valueOf(" НАДО ВЫБРАТЬ ТИП КУЗОВА ");
         } else {
             this.bodyType = bodyType;
         }
@@ -30,46 +36,51 @@ public class Car extends Transport<DriverB> {
 
     @Override
     public void startMoving() {
-        System.out.println(" Легковой автомобиль марки: " + getBrand() + " НАЧАЛ ДВИЖЕНИЕ ");
+        System.out.println(" Легковой автомобиль марки: " + getBrand() + " НАЧАЛ ДВИЖЕНИЕ. ");
 
     }
 
     @Override
     public void stopMoving() {
-        System.out.println(" Легковой автомобиль марки: " + getBrand() + " ЗАКОНЧИЛ ДВИЖЕНИЕ ");
+        System.out.println(" Легковой автомобиль марки: " + getBrand() + " ЗАКОНЧИЛ ДВИЖЕНИЕ. ");
 
     }
 
     @Override
     public void printType() {
-        System.out.println("Данных по транспортному средству недостаточно");
+        System.out.println("Данных по транспортному средству ЛЕГКОВОЙ АВТОМОБИЛЬ " + super.toString() + " тип кузова " + bodyType.getBodyType() + " недостаточно.");
     }
 
 
     @Override
     public void pitStop() {
-        System.out.println(" ПИТ-СТОП у легковой машины " + getBrand());
+        System.out.println(" ПИТ-СТОП у легковой машины. " + getBrand());
 
     }
 
     @Override
     public void bestTimeCycle() {
-        System.out.println("  ЛУЧШЕЕ ВРЕМЯ КРУГА у легковой машины " + getBrand());
+        System.out.println("  ЛУЧШЕЕ ВРЕМЯ КРУГА у легковой машины. " + getBrand());
 
     }
 
     @Override
     public void maxSpeed() {
-        System.out.println(" МАКСИМАЛЬНАЯ СКОРОСТЬ у легковой машины " + getBrand());
+        System.out.println(" МАКСИМАЛЬНАЯ СКОРОСТЬ у легковой машины. " + getBrand());
 
     }
+
+    public BodyType getBodyType() {
+        return bodyType;
+    }
+
 
     @Override
     public String toString() {
         return " ЛЕГКОВОЙ АВТОМОБИЛЬ "
                 + super.toString() +
                 " тип кузова "
-                + bodyType;
+                + bodyType.getBodyType();
 
     }
 }

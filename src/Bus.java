@@ -6,7 +6,11 @@ public class Bus extends Transport<DriverD> {
         BIG("большая (60–80)"),
         ESPECIALLY_LARGE("особо большая (100–120 мест)");
 
-        private String places;
+        private final String places;
+
+        public String getPlaces() {
+            return places;
+        }
 
         PassengerCapacity(String places) {
             this.places = places;
@@ -15,17 +19,13 @@ public class Bus extends Transport<DriverD> {
 
     }
 
-    private String places;
+    private PassengerCapacity places;
 
 
-    public String getPlaces() {
-        return places;
-    }
-
-    public Bus(String brand, String model, double engineVolume, DriverD driver, String places) {
+    public Bus(String brand, String model, double engineVolume, DriverD driver, PassengerCapacity places) {
         super(brand, model, engineVolume, driver);
-        if (places == null || places.isEmpty() || places.isBlank()) {
-            this.places = " default ";
+        if (places == null) {
+            this.places = PassengerCapacity.valueOf(" НУЖНО УКАЗАТЬ МЕСТА ");
         } else {
             this.places = places;
         }
@@ -34,40 +34,46 @@ public class Bus extends Transport<DriverD> {
     @Override
 
     public void startMoving() {
-        System.out.println(" Автобус марки: " + getBrand() + " НАЧАЛ ДВИЖЕНИЕ ");
+        System.out.println(" Автобус марки: " + getBrand() + " НАЧАЛ ДВИЖЕНИЕ. ");
     }
 
     @Override
     public void stopMoving() {
-        System.out.println(" Автобус марки: " + getBrand() + " ЗАКОНЧИЛ ДВИЖЕНИЕ ");
+        System.out.println(" Автобус марки: " + getBrand() + " ЗАКОНЧИЛ ДВИЖЕНИЕ. ");
     }
 
     @Override
     public void printType() {
-        System.out.println("Данных по транспортному средству недостаточно");
+        System.out.println("Данных по транспортному средству АВТОБУС " + super.toString() +
+                " вместимость " + places.getPlaces() + " недостаточно.");
     }
+
 
     @Override
     public void pitStop() {
-        System.out.println(" ПИТ-СТОП у автобуса " + getBrand());
+        System.out.println(" ПИТ-СТОП у автобуса. " + getBrand());
 
     }
 
     @Override
     public void bestTimeCycle() {
-        System.out.println("  ЛУЧШЕЕ ВРЕМЯ КРУГА у автобуса " + getBrand());
+        System.out.println("  ЛУЧШЕЕ ВРЕМЯ КРУГА у автобуса. " + getBrand());
 
     }
 
     @Override
     public void maxSpeed() {
-        System.out.println(" МАКСИМАЛЬНАЯ СКОРОСТЬ у автобуса " + getBrand());
+        System.out.println(" МАКСИМАЛЬНАЯ СКОРОСТЬ у автобуса. " + getBrand());
 
+    }
+
+    public PassengerCapacity getPlaces() {
+        return places;
     }
 
     @Override
     public String toString() {
         return " АВТОБУС " + super.toString() +
-                " вместимость " + places;
+                " вместимость " + places.getPlaces();
     }
 }
