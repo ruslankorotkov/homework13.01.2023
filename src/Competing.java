@@ -4,6 +4,4 @@ public interface Competing {
     void bestTimeCycle();
 
     void maxSpeed();
-
-
 }

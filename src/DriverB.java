@@ -19,5 +19,4 @@ public class DriverB extends Driver {
         System.out.println("Водитель категории B " + getName() + " ЗАПРАВИЛ АВТО ");
     }
 
-
 }

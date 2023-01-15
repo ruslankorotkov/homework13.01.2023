@@ -42,12 +42,9 @@ public abstract class Driver {
 
     public abstract void startMove();
 
-
     public abstract void stopMove();
 
-
     public abstract void refuel();
-
 
     @Override
     public String toString() {
@@ -55,7 +52,6 @@ public abstract class Driver {
                 " ИМЯ: " + name +
                 ", ПРАВА КАТЕГОРИИ:" + driverLicense +
                 ", СТАЖ:" + experience;
-
     }
 }
 

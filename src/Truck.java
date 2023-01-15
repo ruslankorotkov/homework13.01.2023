@@ -15,18 +15,16 @@ public class Truck extends Transport<DriverC> {
         }
     }
 
-
     private LoadCapacity capacity;
 
-
-
-
-    public Truck(String brand, String model, double engineVolume, DriverC driver, LoadCapacity capacity) {
+    public Truck(String brand, String model, double engineVolume, DriverC driver, double capacity) {
         super(brand, model, engineVolume, driver);
-        if (capacity == null ) {
-            this.capacity = LoadCapacity.valueOf(" УКАЖИТЕ ВМЕСТИМОСТЬ. ");
-        }else {
+        if (capacity <= 3.5) {
             this.capacity = LoadCapacity.N1;
+        } else if (capacity <= 12) {
+            this.capacity = LoadCapacity.N2;
+        } else if (capacity > 12) {
+            this.capacity = LoadCapacity.N2;
         }
     }
 
@@ -44,7 +42,7 @@ public class Truck extends Transport<DriverC> {
 
     @Override
     public void printType() {
-        System.out.println("Данных по транспортному средству ГРУЗОВИК "+ super.toString() +
+        System.out.println("Данных по транспортному средству ГРУЗОВИК " + super.toString() +
                 " грузоподъёмность " + capacity.getCapacity() + " недостаточно. ");
     }
 
@@ -66,16 +64,15 @@ public class Truck extends Transport<DriverC> {
         System.out.println(" МАКСИМАЛЬНАЯ СКОРОСТЬ у грузовика." + getBrand());
 
     }
+
     public LoadCapacity getCapacity() {
         return capacity;
     }
-
 
     @Override
     public String toString() {
         return " ГРУЗОВИК " + super.toString() +
                 " грузоподъёмность " + capacity.getCapacity();
     }
-
 }
 
