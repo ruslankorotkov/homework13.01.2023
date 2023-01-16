@@ -42,12 +42,9 @@ public abstract class Driver {
 
     public abstract void startMove();
 
-
     public abstract void stopMove();
 
-
     public abstract void refuel();
-
 
     @Override
     public String toString() {
