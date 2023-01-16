@@ -12,8 +12,8 @@ public class Main {
         Car kia = new Car("Kia", "Sportage 4-го поколения", 2.4, nik, Car.BodyType.BODY_U);
         Bus hyundai = new Bus("Hyundai", "Avante", 1.6, boris, 61);
         Bus ural = new Bus("Урал", "Next", 20.22, boris, 24);
-        Bus paz = new Bus(" Паз", "Вектор Next", 20.20, boris,23);
-        Bus мercedes = new Bus("Mercedes-Benz", "Tourismo", 20.21, boris,120);
+        Bus paz = new Bus(" Паз", "Вектор Next", 20.20, boris, 23);
+        Bus мercedes = new Bus("Mercedes-Benz", "Tourismo", 20.21, boris, 120);
         Truck kamaz = new Truck("Камаз", "компас", 12.45, oleg, 2.5);
         Truck zil = new Truck("Зил", "43", 24.12, oleg, 23.5);
         Truck man = new Truck("Man", "TGL", 12.45, oleg, 13.3);
@@ -29,5 +29,6 @@ public class Main {
         audi.printType();
         kamaz.printInfo();
         kamaz.printType();
+
     }
 }

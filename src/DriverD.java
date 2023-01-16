@@ -19,4 +19,5 @@ public class DriverD extends Driver {
         System.out.println("Водитель категории D " + getName() + " ЗАПРАВИЛ АВТО ");
     }
 
+
 }

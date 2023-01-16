@@ -51,8 +51,7 @@ public class Bus extends Transport<DriverD> {
 
     @Override
     public void printType() {
-        System.out.println("Данных по транспортному средству АВТОБУС " + super.toString() +
-                " вместимость " + places + " недостаточно.");
+        System.out.println("Данных по транспортному средству АВТОБУС " + super.toString() + " вместимость " + places + " .");
     }
 
 
@@ -81,7 +80,6 @@ public class Bus extends Transport<DriverD> {
 
     @Override
     public String toString() {
-        return " АВТОБУС " + super.toString() +
-                " Вместимость " + places + " мест ";
+        return " АВТОБУС " + super.toString() + " Вместимость " + places + " мест ";
     }
 }

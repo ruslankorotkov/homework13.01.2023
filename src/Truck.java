@@ -42,8 +42,8 @@ public class Truck extends Transport<DriverC> {
 
     @Override
     public void printType() {
-        System.out.println("Данных по транспортному средству ГРУЗОВИК " + super.toString() +
-                " грузоподъёмность " + capacity.getCapacity() + " недостаточно. ");
+        System.out.println("Данные по транспортному средству ГРУЗОВИК " + super.toString() +
+                " грузоподъёмность " + capacity.getCapacity() + " . ");
     }
 
 

@@ -24,11 +24,8 @@ public class Car extends Transport<DriverB> {
 
     public Car(String brand, String model, double engineVolume, DriverB driver, BodyType bodyType) {
         super(brand, model, engineVolume, driver);
-        if (bodyType == null) {
-            this.bodyType = BodyType.valueOf(" НАДО ВЫБРАТЬ ТИП КУЗОВА ");
-        } else {
-            this.bodyType = bodyType;
-        }
+        this.bodyType = bodyType;
+
     }
 
     @Override
@@ -45,7 +42,7 @@ public class Car extends Transport<DriverB> {
 
     @Override
     public void printType() {
-        System.out.println("Данных по транспортному средству ЛЕГКОВОЙ АВТОМОБИЛЬ " + super.toString() + " тип кузова " + bodyType.getBodyType() + " недостаточно.");
+        System.out.println("Данные по транспортному средству ЛЕГКОВОЙ АВТОМОБИЛЬ " + super.toString() + " тип кузова " + bodyType.getBodyType() + " .");
     }
 
 
